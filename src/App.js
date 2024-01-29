@@ -6,7 +6,7 @@ import Search from './pages/Search';
 
 function App() {
   return (
-    <div className="h-100vh">
+    <div>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/search" element={<Search />} />

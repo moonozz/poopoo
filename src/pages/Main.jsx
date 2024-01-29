@@ -2,7 +2,9 @@ import React from 'react'
 
 function Main() {
   return (
-    <div>Main</div>
+    <div className="flex-center h-screen">
+      Main
+    </div>
   )
 }
 
