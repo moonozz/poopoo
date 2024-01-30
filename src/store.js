@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 const usePooStore = create((set) => ({
   headers: "main",
