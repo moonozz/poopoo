@@ -45,9 +45,15 @@ module.exports = {
       borderRadius: px0To64,
     },
     screens: {
-      mobile: { max: "767px" },
+      mobile: { max: "415px" },
     },
   },
 
   plugins: [],
+
+  '@tailwind base': {
+    '*': {
+      boxSizing: 'border-box',
+    },
+  },
 };

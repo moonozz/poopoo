@@ -1,8 +1,10 @@
 import { create } from 'zustand';
 
 const usePooStore = create((set) => ({
+  // headers: false,
+  // setHeaders: () => set((state) => ({ headers: !state.headers})),
   headers: "main",
-  setHeaders: () => (text) => set({headers: text}),
+  setHeaders: (text) => set({headers: text}),
   searchInputValue: "",
   setSearchInputValue: (text) => set({searchInputValue: text}),
   chooseStation: "",
