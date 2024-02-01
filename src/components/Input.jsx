@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import usePooStore from '../store'
 
 function Input(props) {
@@ -10,12 +10,14 @@ function Input(props) {
     onClick,
   } = props;
 
-  const { headers, setHeaders } = usePooStore();
+  const { headers, setHeaders,  } = usePooStore();
+  // const [ searchValue, setSearchValue ] = useState("")
+  // const [ memoTxt, setMemoTxt ] = useState({fr_code: "", text: ""})
 
-  useEffect(() => {
-    // setHeaders(`${headers}`);
-    console.log(headers);
-  }, [headers])
+  // useEffect(() => {
+  //   // setHeaders(`${headers}`);
+  //   console.log(headers);
+  // }, [headers])
 
   return (
     <div className='flex w-full h-[48px] bg-white rounded-[30px] gap-[20px] px-[24px]'>
