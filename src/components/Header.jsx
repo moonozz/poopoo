@@ -19,10 +19,11 @@ function Header() {
       setHeaders("result")
     }
     // console.log(location.pathname)
-    // setSearchInputValue(searchInputValue);
+    setSearchInputValue(searchInputValue);
     setSearchValue(handleFilterValue);
-    console.log(searchInputValue);
-  }, [headers, inputSearch])
+    // console.log(searchInputValue);
+    // console.log(searchValue);
+  }, [headers, searchInputValue])
 
   const handleInput = (e) => {
     setInputSearch(e.target.value);
@@ -49,7 +50,6 @@ function Header() {
     // console.log(searchInputValue)
     setSearchValue(handleFilterValue);
     // console.log(searchValue)
-
   }
 
   return (
