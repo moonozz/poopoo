@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import usePooStore from '../store';
 
 
 function Main() {
-  const navi = useNavigate()
+  const navi = useNavigate();
   const { headers, setHeaders } = usePooStore();
+
+  useEffect(() => {
+    setHeaders("main")
+  }, [])
+  
 
   const handleSearchPage = () => {
     navi('/search')
