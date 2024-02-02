@@ -20,19 +20,29 @@ function Header() {
     }
     // console.log(location.pathname)
     setSearchInputValue(searchInputValue);
-    setSearchValue(handleFilterValue);
+    setSearchValue(sortedFilterStation);
     // console.log(searchInputValue);
-    // console.log(searchValue);
+    console.log(searchValue);
   }, [headers, searchInputValue])
 
   const handleInput = (e) => {
     setInputSearch(e.target.value);
   }
 
-  const handleFilterValue = stationData.filter((i) => {
+  // const handleFilterValue = stationData.filter((i) => {
+  //   if (inputSearch.length > 0) {
+  //     return i.station_nm.includes(inputSearch);
+  //   }
+  // })
+
+  const FilterStation = stationData.filter((i) => {
     if (inputSearch.length > 0) {
-      return i.station_nm.includes(inputSearch);
+      return i.station_nm.startsWith(inputSearch);
     }
+  })
+
+  const sortedFilterStation = FilterStation.sort((a, b) => {
+    return a.station_nm.localeCompare(b.station_nm)
   })
 
   const handleEnterKeypress = (e) => {
@@ -40,7 +50,7 @@ function Header() {
       e.preventDefault();
         setSearchInputValue(inputSearch);
         // console.log(searchInputValue)
-        setSearchValue(handleFilterValue)
+        setSearchValue(sortedFilterStation)
         // console.log(searchValue)
     }
   }
@@ -48,7 +58,7 @@ function Header() {
   const handleSearchValue = () => {
     setSearchInputValue(inputSearch);
     // console.log(searchInputValue)
-    setSearchValue(handleFilterValue);
+    setSearchValue(sortedFilterStation);
     // console.log(searchValue)
   }
 
