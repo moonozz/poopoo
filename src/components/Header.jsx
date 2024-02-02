@@ -29,12 +29,6 @@ function Header() {
     setInputSearch(e.target.value);
   }
 
-  // const handleFilterValue = stationData.filter((i) => {
-  //   if (inputSearch.length > 0) {
-  //     return i.station_nm.includes(inputSearch);
-  //   }
-  // })
-
   const FilterStation = stationData.filter((i) => {
     if (inputSearch.length > 0) {
       return i.station_nm.startsWith(inputSearch);

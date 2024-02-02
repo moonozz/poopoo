@@ -5,12 +5,22 @@ import Tag from '../components/Tag'
 
 function Search() {
   const navi = useNavigate();
-  const { headers, setHeaders, searchInputValue, setSearchInputValue, searchValue, chooseStation, setChooseStation, chooseStationLine, setChooseStationLine } = usePooStore();
+  const { headers, setHeaders, searchInputValue, searchValue, chooseStationData, setChooseStationData, chooseStationNm, setChooseStationNm, chooseStationLine, setChooseStationLine } = usePooStore();
 
   useEffect(() => {
     setHeaders("search")
     // console.log(headers)
   }, [headers])
+
+  const handleResulthPage = () => {
+    navi('/search')
+    setHeaders('result');
+    console.log(headers);
+  }
+
+  const handleChooseStation = () => {
+
+  }
 
   return (
     <div className="h-full pt-[76px] px-[20px]">
@@ -37,7 +47,7 @@ function Search() {
                 } 
                 return(
                     <li key={i.station_cd}>
-                      <button className='flex w-full py-[8px] mb-[8px] items-center'>
+                      <button className='flex w-full py-[8px] mb-[8px] items-center hover:font-black'>
                         {/* <Tag className={`${line.length === 1 ? 'text-[14px]' : 'text-[9px]' }`} lineTxt={line}>{line}</Tag> */}
                         <Tag lineTxt={line} />
                         <span className='text-[14px] ml-[8px]'>{station}</span>
