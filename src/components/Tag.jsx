@@ -2,7 +2,7 @@ import React from 'react'
 
 function Tag(props) {
   const {
-    lineTxt
+    lineTxt, className, spanClassName,
   } = props;
 
   const getBgClassNm = (lineTxt) => {
@@ -61,9 +61,9 @@ function Tag(props) {
   }
 
   return (
-    // <div className={`${lineTxt === '1' ? 'bg-01' : lineTxt === '2' ? 'bg-02' : lineTxt === '3' ? 'bg-03' : lineTxt === '4' ? 'bg-04' : lineTxt === '5' ? 'bg-05' : lineTxt === '6' ? 'bg-06' : lineTxt === '7' ? 'bg-07' : lineTxt === '8' ? 'bg-08' : lineTxt === '9' ? 'bg-09' : lineTxt === '경강선' ? 'bg-gyeonggang' : lineTxt === '경의선' ? 'bg-gyeongui' : lineTxt === '경춘선' ? 'bg-gyeongchun' : lineTxt === '공항철도' ? 'bg-airport' : lineTxt === '김포도시철도' ? 'bg-kimpogold' : lineTxt === '서해선' ? 'bg-seohae' : lineTxt === '수인분당선' ? 'bg-bundang' : lineTxt === '신림선' ? 'bg-sillim' : lineTxt === '신분당선' ? 'bg-sinbundang' : lineTxt === '용인경전철' ? 'bg-everline' : lineTxt === '우이신설경전철' ? 'bg-ui_sinseol' : lineTxt === '의정부경전철' ? 'bg-uijeongbu' : lineTxt === '인천선' ? 'bg-incheon01' : lineTxt === '인천2호선' ? 'bg-incheon02' : 'gray'}`}>
-    <div className={`${getBgClassNm(lineTxt)} ${lineTxt.length === 1 ? 'px-[10px] py-[4px]' :  'px-[8px] py-[8px]'} rounded-[30px]`}>
-      <span className={`${lineTxt.length === 1 ? 'text-[14px]' : 'text-[10px]'} text-white font-black`} >{lineTxt}</span>
+    // <div className={`${getBgClassNm(lineTxt)} ${className} ${lineTxt.length === 1 ? 'px-[10px] py-[4px]' :  'px-[8px] py-[8px]'} rounded-[30px]`}>
+    <div className={`${getBgClassNm(lineTxt)} ${className} rounded-[30px]`}>
+      <span className={spanClassName}>{lineTxt}</span>
     </div>
   )
 }

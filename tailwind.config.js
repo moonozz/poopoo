@@ -18,6 +18,7 @@ module.exports = {
         'lightGray': "#F4F4F4",
         'gray': "#AAAAAA",
         'black': '#1E1E1E',
+        'hoverGray': '#D9D8D1',
         '01': "#263C96",
         '02': "#3CB44A",
         '03': "#FF7300",

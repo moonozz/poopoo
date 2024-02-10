@@ -22,7 +22,7 @@ function Header() {
     setSearchInputValue(searchInputValue);
     setSearchValue(sortedFilterStation);
     // console.log(searchInputValue);
-    console.log(searchValue);
+    // console.log(searchValue);
   }, [headers, searchInputValue])
 
   const handleInput = (e) => {

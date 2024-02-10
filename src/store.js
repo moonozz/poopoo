@@ -9,14 +9,16 @@ const usePooStore = create((set) => ({
   setSearchInputValue: (text) => set({searchInputValue: text}),
   searchValue: [],
   setSearchValue: (newList) => set({searchValue: [newList]}),
-  chooseStationData: {},
-  setChooseStationData: (text) => set({chooseStationData: {text}}),
   chooseStationNm: "",
   setChooseStationNm: (text) => set({chooseStationNm: text}),
   chooseStationLine: "",
   setChooseStationLine: (text) => set({chooseStationLine: text}),
+  chooseStationData: {},
+  setChooseStationData: (data) => set({chooseStationData: {data}}),
+  sameStation: [],
+  setSameStation: (newList) => set({sameStation: newList}),
   memo: [],
-  setMemo: (fr_code, text) => set((prev) => ({memo: [...prev.memo, {fr_code: fr_code, text: text}]}))
+  setMemo: (STIN_CD, text) => set((prev) => ({memo: [...prev.memo, {STIN_CD: STIN_CD, text: text}]}))
 }))
 
 export default usePooStore;

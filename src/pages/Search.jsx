@@ -1,25 +1,32 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import usePooStore from '../store';
 import Tag from '../components/Tag'
 
 function Search() {
   const navi = useNavigate();
-  const { headers, setHeaders, searchInputValue, searchValue, chooseStationData, setChooseStationData, chooseStationNm, setChooseStationNm, chooseStationLine, setChooseStationLine } = usePooStore();
+  const { headers, setHeaders, searchInputValue, searchValue, chooseStationData, setChooseStationData, sameStation, setSameStation } = usePooStore();
 
   useEffect(() => {
-    setHeaders("search")
+    setHeaders("search");
     // console.log(headers)
-  }, [headers])
+    console.log(chooseStationData);
+    console.log(sameStation);
+  }, [headers, chooseStationData])
 
   const handleResulthPage = () => {
-    navi('/search')
+    navi('/result')
     setHeaders('result');
-    console.log(headers);
   }
 
-  const handleChooseStation = () => {
-    
+  const handleChooseStation = (stationData) => {
+    // console.log("선택완료", stationData);
+    setChooseStationData(stationData);
+    const filterLine = searchValue[0].filter((i) => {
+      return i.STIN_NM === stationData.STIN_NM
+    })
+    setSameStation(filterLine);
+    handleResulthPage();
   }
 
   return (
@@ -40,18 +47,12 @@ function Search() {
           {searchValue.map((item) => {
             return (
               item.map((i) => {
-                // const station = i.station_nm;
                 const station = i.STIN_NM;
-                // let line = i.line_num;
                 let line = i.LN_NM;
-                // if (line[0] === "0") {
-                //   line = line.slice(1,2)
-                // } 
                 return(
-                    <li key={i.station_cd}>
-                      <button className='flex w-full py-[8px] mb-[8px] items-center hover:font-black'>
-                        {/* <Tag className={`${line.length === 1 ? 'text-[14px]' : 'text-[9px]' }`} lineTxt={line}>{line}</Tag> */}
-                        <Tag lineTxt={line} />
+                    <li key={`${i.LN_CD} + ${i.STIN_CD}`}>
+                      <button className='flex w-full py-[8px] mb-[8px] items-center hover:font-black' onClick={() => handleChooseStation(i)}>
+                        <Tag lineTxt={line} spanClassName={`text-[11px] text-white font-black`} className={`px-[8px] py-[8px]`}/>
                         <span className='text-[14px] ml-[8px]'>{station}</span>
                       </button>
                     </li>
