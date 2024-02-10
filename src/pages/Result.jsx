@@ -12,7 +12,17 @@ function Result() {
     setHeaders("result")
     console.log(headers);
     console.log(chooseStationData)
-    console.log(sameStation)    
+    console.log(sameStation)
+
+    axios
+      .get(`https://openapi.kric.go.kr/openapi/convenientInfo/stationToilet?serviceKey=$2a$10$f${process.env.REACT_APP_TOILET_API_KEY}&format=json&railOprIsttCd=${stationData.RAIL_OPR_ISTT_CD}&lnCd=${stationData.LN_CD}&stinCd=${stationData.STIN_CD}`)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    
   }, [headers, chooseStationData, ])
 
   return (
