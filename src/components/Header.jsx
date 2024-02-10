@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import usePooStore from '../store'
 import Input from './Input';
-import station from '../data/seoul-station-info.json'
+// import station from '../data/seoul-station-info.json';
+import stationJson from '../data/data.json';
 import { useLocation } from 'react-router-dom';
 
 function Header() {
   const location = useLocation()
   const { headers, setHeaders, searchInputValue, setSearchInputValue, searchValue, setSearchValue } = usePooStore();
   const [ inputSearch, setInputSearch ] = useState("")
-  const stationData = station.DATA;
+  // const stationData = station.DATA;
 
   useEffect(() => {
     if(location.pathname === "/") {
@@ -29,14 +30,24 @@ function Header() {
     setInputSearch(e.target.value);
   }
 
-  const FilterStation = stationData.filter((i) => {
+  // const FilterStation = stationData.filter((i) => {
+  //   if (inputSearch.length > 0) {
+  //     return i.station_nm.startsWith(inputSearch);
+  //   }
+  // })
+
+  const FilterStationJson = stationJson.filter((i) => {
     if (inputSearch.length > 0) {
-      return i.station_nm.startsWith(inputSearch);
+      return i.STIN_NM.startsWith(inputSearch);
     }
   })
 
-  const sortedFilterStation = FilterStation.sort((a, b) => {
-    return a.station_nm.localeCompare(b.station_nm)
+  // const sortedFilterStation = FilterStation.sort((a, b) => {
+  //   return a.station_nm.localeCompare(b.station_nm)
+  // })
+
+  const sortedFilterStation = FilterStationJson.sort((a, b) => {
+    return a.STIN_NM.localeCompare(b.STIN_NM)
   })
 
   const handleEnterKeypress = (e) => {

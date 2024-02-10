@@ -41,6 +41,7 @@ module.exports = {
         'uijeongbu': '#FF9D27',
         'incheon01': '#6F99D0',
         'incheon02': '#FFB850',
+        'magtrainf': '#FFCD12',
       },
       minWidth: px0To1000,
       minHeight: px0To1000,

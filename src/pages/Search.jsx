@@ -19,7 +19,7 @@ function Search() {
   }
 
   const handleChooseStation = () => {
-
+    
   }
 
   return (
@@ -40,11 +40,13 @@ function Search() {
           {searchValue.map((item) => {
             return (
               item.map((i) => {
-                const station = i.station_nm;
-                let line = i.line_num
-                if (line[0] === "0") {
-                  line = line.slice(1,2)
-                } 
+                // const station = i.station_nm;
+                const station = i.STIN_NM;
+                // let line = i.line_num;
+                let line = i.LN_NM;
+                // if (line[0] === "0") {
+                //   line = line.slice(1,2)
+                // } 
                 return(
                     <li key={i.station_cd}>
                       <button className='flex w-full py-[8px] mb-[8px] items-center hover:font-black'>
