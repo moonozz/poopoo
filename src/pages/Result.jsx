@@ -7,6 +7,9 @@ import ResultLi from '../components/ResultLi';
 function Result() {
   const { headers, setHeaders, searchValue, chooseStation, chooseStationData, setChooseStationData, sameStation } = usePooStore();
   const stationData = chooseStationData.data;
+  
+  const [localData, setLocalData] = useState(null);
+
   const getChooseData = localStorage.getItem("chooseData")
   const parsedChooseData = JSON.parse(getChooseData);
 
@@ -29,6 +32,7 @@ function Result() {
           toltNum: resData.toltNum //화장실개수
         }
         localStorage.setItem("chooseData", JSON.stringify(chooseData));
+        setLocalData(chooseData);
       })
       .catch((err) => {
         console.log(err)
@@ -37,12 +41,31 @@ function Result() {
 
   useEffect(() => {
     setHeaders("result")
-    console.log(headers);
-    console.log(chooseStationData)
-    console.log(sameStation)
+    // console.log(headers);
+    // console.log(chooseStationData)
+    // console.log(sameStation)
     handleFetch()
     console.log(parsedChooseData)
   }, [headers, chooseStationData])
+
+  useEffect(() => {
+    // localStorage 변경을 감지하여 localData 상태 업데이트
+    const handleLocalStorageChange = () => {
+      const getChooseData = localStorage.getItem("chooseData")
+      const parsedChooseData = JSON.parse(getChooseData);
+    
+      setLocalData(parsedChooseData);
+    };
+
+    // localStorage 변경 이벤트 리스너 등록
+    window.addEventListener('storage', handleLocalStorageChange);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener('storage', handleLocalStorageChange);
+    };
+
+  }, []);
 
   return (
     <section className="flex flex-col h-full pt-[76px] px-[20px] gap-[20px]">
@@ -75,6 +98,7 @@ function Result() {
           }
           <ResultLi title={`출구번호`} contents={`${parsedChooseData.exitNo}번 출구에서 가까워요`} />
           <ResultLi title={`상세 위치`} contents={`${parsedChooseData.dtlLoc}`} />
+          <ResultLi title={`역코드`} contents={`${parsedChooseData.stinCd}`} />
         </ul>
       </div>
     </section>
