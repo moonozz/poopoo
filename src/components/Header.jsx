@@ -18,11 +18,8 @@ function Header() {
     } else {
       setHeaders("result")
     }
-    // console.log(location.pathname)
     setSearchInputValue(searchInputValue);
-    setSearchValue(sortedFilterStation);
-    // console.log(searchInputValue);
-    // console.log(searchValue);
+    setSearchValue(sliceStationNM);
   }, [headers, searchInputValue])
 
   const handleInput = (e) => {
@@ -39,22 +36,22 @@ function Header() {
     return a.STIN_NM.localeCompare(b.STIN_NM)
   })
 
+  const sliceStationNM = sortedFilterStation.map((i) => {
+    return { ...i, STIN_NM: i.STIN_NM.split("(")[0].trim() }
+  })
+
   const handleEnterKeypress = (e) => {
     if(e.key === "Enter") {
       e.preventDefault();
       // 검색input에 입력한 텍스트 기억하는 용도
       setSearchInputValue(inputSearch);
-      // console.log(searchInputValue)
-      setSearchValue(sortedFilterStation)
-      // console.log(searchValue)
+      setSearchValue(sliceStationNM)
     }
   }
 
   const handleSearchValue = () => {
     setSearchInputValue(inputSearch);
-    // console.log(searchInputValue)
-    setSearchValue(sortedFilterStation);
-    // console.log(searchValue)
+    setSearchValue(sliceStationNM);
   }
 
   const handleBackPage = () => {
