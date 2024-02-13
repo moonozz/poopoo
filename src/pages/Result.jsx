@@ -5,16 +5,18 @@ import axios from 'axios';
 import ResultLi from '../components/ResultLi';
 
 function Result() {
-  const { headers, setHeaders, searchValue, chooseStation, chooseStationData, setChooseStationData, sameStation, setChooseResultData, chooseResultData } = usePooStore();
+  const { headers, setHeaders, searchValue, chooseStationData, setChooseStationData, sameStation, setChooseResultData, chooseResultData, memo, setMemo, memoFilter, setMemoFilter } = usePooStore();
+  const thisMemo = `${chooseStationData.RAIL_OPR_ISTT_CD}${chooseStationData.LN_CD}${chooseStationData.STIN_CD}`
 
-  const [localData, setLocalData] = useState(null);
+  const [memoObj, setMemoObj] = useState({key:thisMemo, text:""})
 
   const handleFetch = () => {
     axios
       .get(`https://openapi.kric.go.kr/openapi/convenientInfo/stationToilet?serviceKey=$2a$10$f${process.env.REACT_APP_TOILET_API_KEY}&format=json&railOprIsttCd=${chooseStationData.RAIL_OPR_ISTT_CD}&lnCd=${chooseStationData.LN_CD}&stinCd=${chooseStationData.STIN_CD}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setChooseResultData(null);
+        setMemoObj({key:"", text:""});
 
         if (res.data.header.resultCode === "00") {
           const resData = res.data.body[0]
@@ -44,20 +46,28 @@ function Result() {
       })
   }
 
+  const filterMemo = memo.filter((i) => {
+    return i.key === thisMemo
+  })
+
   useEffect(() => {
     setHeaders("result")
     // console.log(headers);
     console.log(chooseStationData)
     // console.log(sameStation)
     handleFetch()
-    console.log(chooseStationData)
-    console.log(chooseResultData)
-  }, [headers, chooseStationData ])
+    setMemoObj({key:thisMemo, text:""});
+    // console.log(chooseStationData)
+    // console.log(chooseResultData)
+  }, [headers, chooseStationData, memo])
 
   const handleChangeStation = (stationData) => {
-    
     setChooseStationData(stationData);
-    console.log(stationData);
+  }
+
+  const handleTxtArea = (e) => {
+    setMemoObj({...memoObj, text: e.target.value})
+    console.log(memoObj);
   }
 
   return (
@@ -101,6 +111,13 @@ function Result() {
           </ul>
         </div>
       )}
+      <div className='flex flex-col p-[20px] bg-white rounded-[16px]'>
+        <h4 className='text-[14px] font-extrabold mb-[12px]'>나만의 메모</h4>
+        <div className='flex flex-col items-end' >
+          <textarea className='w-full bg-lightGray h-[140px] w-full p-[14px] rounded-[10px] text-[14px] mb-[12px] resize-none outline-black' placeholder='메모를 입력해주세요.' onChange={handleTxtArea} value={memoObj.text} spellcheck="false"/>
+          <button className='w-auto bg-black py-[12px] px-[16px] text-white text-[12px] font-bold rounded-[30px]' >저장</button>
+        </div>
+      </div>
     </section>
   )
 }
