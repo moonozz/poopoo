@@ -27,10 +27,10 @@ function Main() {
         <img className='w-full max-w-[430px] min-w-[184px] px-[40px]' src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt='logoImage'/>
       </div>
       <div className='flex w-full h-[48px] bg-white rounded-[30px] mt-[90px] mobile:mt-[48px]'>
-        <a className='flex justify-between w-full px-[24px] py-[14px]' onClick={handleSearchPage}>
-          <span className='grow text-[14px] text-gray'>지하철역을 검색하세요.</span>
+        <button className='flex justify-between w-full px-[24px] py-[14px]' onClick={handleSearchPage}>
+          <span className='grow text-[14px] text-left text-gray'>지하철역을 검색하세요.</span>
           <img src={`${process.env.PUBLIC_URL}/assets/icon-search.svg`} alt='search-button'/>
-        </a>
+        </button>
       </div>
     </div>
   )
