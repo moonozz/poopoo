@@ -8,28 +8,22 @@ function Input(props) {
     onChange,
     onKeyDown,
     onClick,
+    className,
   } = props;
 
-  const { headers, setHeaders,  } = usePooStore();
-  // const [ searchValue, setSearchValue ] = useState("")
-  // const [ memoTxt, setMemoTxt ] = useState({fr_code: "", text: ""})
-
-  // useEffect(() => {
-  //   // setHeaders(`${headers}`);
-  //   console.log(headers);
-  // }, [headers])
+  const { headers, setHeaders } = usePooStore();
 
   return (
-    <div className='flex w-full h-[48px] bg-white rounded-[30px] gap-[20px] px-[24px]'>
-      <input className="grow text-[14px] text-black placeholder:text-gray focus:outline-none " placeholder={placeholder} onChange={onChange} value={value} onKeyDown={onKeyDown}/>
+    <div className={`flex w-full h-[48px] rounded-[30px] gap-[20px] pl-[24px] pr-[10px] ${className}`}>
+      <input className={`grow text-[14px] text-black placeholder:text-gray focus:outline-none ${className}`} placeholder={placeholder} onChange={onChange} value={value} onKeyDown={onKeyDown}/>
       {headers === "search" 
         ?
-          <button onClick={onClick}>
+          <button className="mr-[8px]" onClick={onClick}>
             <img src={`${process.env.PUBLIC_URL}/assets/icon-search.svg`} alt='search-button'/>
           </button>
         : 
           <button onClick={onClick}>
-            <span>저장</span>
+            <span className="bg-black py-[10px] px-[12px] text-white text-[12px] font-bold rounded-[30px]">저장</span>
           </button>
       }
     </div>

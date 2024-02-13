@@ -68,7 +68,7 @@ function Header() {
           <button className='flex-center w-[50px] h-[50px]' onClick={handleBackPage}>
             <img className='' src={`${process.env.PUBLIC_URL}/assets/icon-back.svg`} alt='back-button' />
           </button>
-          <Input placeholder='지하철역을 검색하세요.' onChange={handleInput} value={inputSearch} onKeyDown={handleEnterKeypress} onClick={handleSearchValue}/>
+          <Input className="bg-white" placeholder='지하철역을 검색하세요.' onChange={handleInput} value={inputSearch} onKeyDown={handleEnterKeypress} onClick={handleSearchValue}/>
         </div>
       )}
       {headers === "result" && (
