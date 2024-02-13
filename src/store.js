@@ -16,8 +16,10 @@ const usePooStore = create(
       setSameStation: (newList) => set({sameStation: newList}),
       chooseResultData: {},
       setChooseResultData: (data) => set({chooseResultData: data}),
+      memoFilter: false,
+      setMemoFilter: (boolean) => set({memoFilter: boolean}),
       memo: [],
-      setMemo: (STIN_CD, text) => set((prev) => ({memo: [...prev.memo, {STIN_CD: STIN_CD, text: text}]}))
+      setMemo: (newMemo) => set((prev) => ({memo: [...prev.memo, newMemo]}))
     }),
     {
       name: "poopoo-storage",
