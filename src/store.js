@@ -19,7 +19,8 @@ const usePooStore = create(
       memoFilter: false,
       setMemoFilter: (boolean) => set({memoFilter: boolean}),
       memo: [],
-      setMemo: (newMemo) => set((prev) => ({memo: [...prev.memo, newMemo]}))
+      // setMemo: (newMemo) => set((prev) => ({memo: [...prev.memo, newMemo]}))
+      setMemo: (newMemo) => set({memo: newMemo}),
     }),
     {
       name: "poopoo-storage",

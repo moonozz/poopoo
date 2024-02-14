@@ -5,19 +5,22 @@ import axios from 'axios';
 import ResultLi from '../components/ResultLi';
 
 function Result() {
-  const { headers, setHeaders, searchValue, chooseStationData, setChooseStationData, sameStation, setChooseResultData, chooseResultData, memo, setMemo, memoFilter, setMemoFilter } = usePooStore();
-  const thisMemo = `${chooseStationData.RAIL_OPR_ISTT_CD}${chooseStationData.LN_CD}${chooseStationData.STIN_CD}`
+  const { headers, setHeaders, searchValue, chooseStationData, setChooseStationData, sameStation, setChooseResultData, chooseResultData, memo, setMemo } = usePooStore();
+  const { RAIL_OPR_ISTT_CD, LN_CD, STIN_CD } = chooseStationData
+  
+  const thisMemoKey = `${RAIL_OPR_ISTT_CD}${LN_CD}${STIN_CD}`;
+  
+  const [memoObj, setMemoObj] = useState({key:thisMemoKey, text:""})
 
-  const [memoObj, setMemoObj] = useState({key:thisMemo, text:""})
+  const memoIndex = memo.findIndex((i) => i.key === memoObj.key)
 
   const handleFetch = () => {
     axios
-      .get(`https://openapi.kric.go.kr/openapi/convenientInfo/stationToilet?serviceKey=$2a$10$f${process.env.REACT_APP_TOILET_API_KEY}&format=json&railOprIsttCd=${chooseStationData.RAIL_OPR_ISTT_CD}&lnCd=${chooseStationData.LN_CD}&stinCd=${chooseStationData.STIN_CD}`)
+      .get(`https://openapi.kric.go.kr/openapi/convenientInfo/stationToilet?serviceKey=$2a$10$f${process.env.REACT_APP_TOILET_API_KEY}&format=json&railOprIsttCd=${RAIL_OPR_ISTT_CD}&lnCd=${LN_CD}&stinCd=${STIN_CD}`)
       .then((res) => {
         // console.log(res);
         setChooseResultData(null);
-        setMemoObj({key:"", text:""});
-
+        
         if (res.data.header.resultCode === "00") {
           const resData = res.data.body[0]
           const chooseData = {
@@ -34,6 +37,7 @@ function Result() {
             toltNum: resData.toltNum //화장실개수
           }
           setChooseResultData(chooseData)
+          setMemoObj({key:thisMemoKey, text:""});
           // setLocalData(chooseData);
         } else {
           setChooseResultData(null)
@@ -46,28 +50,58 @@ function Result() {
       })
   }
 
-  const filterMemo = memo.filter((i) => {
-    return i.key === thisMemo
-  })
-
   useEffect(() => {
     setHeaders("result")
     // console.log(headers);
     console.log(chooseStationData)
     // console.log(sameStation)
-    handleFetch()
-    setMemoObj({key:thisMemo, text:""});
+    handleFetch();
+
+    // const memoFilter = memo.filter((i) => {
+    //   return memoObj.key === i.key
+    // })
+
+    // if(memoFilter.length === 0) {
+    //   setMemoObj({key: thisMemoKey, text:""});
+    // } else {
+    //   setMemoObj({key:thisMemoKey, text:memoFilter[0].text});
+    // }
+    if(memoIndex === -1) {
+      setMemoObj({key: thisMemoKey, text:""})
+      console.log(memoObj);
+      console.log(memoIndex);
+    } else {
+      setMemoObj({key: thisMemoKey, text:memo[memoIndex].text})
+      console.log(memoObj);
+      console.log(memoIndex);
+    }
+
+    // handleSaveMemo();
+
+    console.log(memoObj);
+
     // console.log(chooseStationData)
     // console.log(chooseResultData)
-  }, [headers, chooseStationData, memo])
+  // }, [headers, chooseStationData, memo])
+  }, [headers, chooseStationData, memo, memoObj.key])
 
   const handleChangeStation = (stationData) => {
     setChooseStationData(stationData);
   }
 
-  const handleTxtArea = (e) => {
+  const handleChangeTextArea = (e) => {
     setMemoObj({...memoObj, text: e.target.value})
-    console.log(memoObj);
+    // console.log(memoObj);
+  }
+
+  const handleSaveMemo = () => {
+    if(memoIndex === -1) {
+      setMemo([...memo, memoObj])
+    } else {
+      const newMemo = [...memo];
+      newMemo[memoIndex].text = memoObj.text;
+      setMemo(newMemo)
+    }
   }
 
   return (
@@ -82,7 +116,7 @@ function Result() {
             return(
               <li key={`${i.LN_CD}${i.STIN_CD}`} className='mr-[4px]'>
                 <button className='flex' onClick={() => handleChangeStation(i)}>
-                  <Tag lineTxt={i.LN_NM} className={`px-[16px] py-[12px] ${chooseStationData.RAIL_OPR_ISTT_CD === i.RAIL_OPR_ISTT_CD && chooseStationData.LN_CD === i.LN_CD && chooseStationData.STIN_CD === i.STIN_CD ? "" : "bg-mainBg hover:bg-hoverGray"}`} spanClassName={`text-[12px] ${chooseStationData.RAIL_OPR_ISTT_CD === i.RAIL_OPR_ISTT_CD && chooseStationData.LN_CD === i.LN_CD && chooseStationData.STIN_CD === i.STIN_CD ? "text-white font-black" : "text-black"}`}/>
+                  <Tag lineTxt={i.LN_NM} className={`px-[16px] py-[12px] ${RAIL_OPR_ISTT_CD === i.RAIL_OPR_ISTT_CD && LN_CD === i.LN_CD && STIN_CD === i.STIN_CD ? "" : "bg-mainBg hover:bg-hoverGray"}`} spanClassName={`text-[12px] ${RAIL_OPR_ISTT_CD === i.RAIL_OPR_ISTT_CD && LN_CD === i.LN_CD && STIN_CD === i.STIN_CD ? "text-white font-black" : "text-black"}`}/>
                 </button>
               </li>
             )
@@ -114,8 +148,8 @@ function Result() {
       <div className='flex flex-col p-[20px] bg-white rounded-[16px]'>
         <h4 className='text-[14px] font-extrabold mb-[12px]'>나만의 메모</h4>
         <div className='flex flex-col items-end' >
-          <textarea className='w-full bg-lightGray h-[140px] w-full p-[14px] rounded-[10px] text-[14px] mb-[12px] resize-none outline-black' placeholder='메모를 입력해주세요.' onChange={handleTxtArea} value={memoObj.text} spellcheck="false"/>
-          <button className='w-auto bg-black py-[12px] px-[16px] text-white text-[12px] font-bold rounded-[30px]' >저장</button>
+          <textarea className='w-full bg-lightGray h-[140px] w-full p-[14px] rounded-[10px] text-[14px] mb-[12px] resize-none outline-black' placeholder='메모를 입력해주세요.' onChange={handleChangeTextArea} value={memoObj.text} spellcheck="false"/>
+          <button className='w-auto bg-black py-[12px] px-[16px] text-white text-[12px] font-bold rounded-[30px]' onClick={handleSaveMemo}>저장</button>
         </div>
       </div>
     </section>
