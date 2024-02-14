@@ -5,22 +5,21 @@ import axios from 'axios';
 import ResultLi from '../components/ResultLi';
 
 function Result() {
-  const { headers, setHeaders, searchValue, chooseStationData, setChooseStationData, sameStation, setChooseResultData, chooseResultData, memo, setMemo } = usePooStore();
+  const { headers, setHeaders, chooseStationData, setChooseStationData, sameStation, setChooseResultData, chooseResultData, memo, setMemo } = usePooStore();
   const { RAIL_OPR_ISTT_CD, LN_CD, STIN_CD } = chooseStationData
   
   const thisMemoKey = `${RAIL_OPR_ISTT_CD}${LN_CD}${STIN_CD}`;
   
   const [memoObj, setMemoObj] = useState({key:thisMemoKey, text:""})
-
+  
   const memoIndex = memo.findIndex((i) => i.key === memoObj.key)
 
   const handleFetch = () => {
     axios
       .get(`https://openapi.kric.go.kr/openapi/convenientInfo/stationToilet?serviceKey=$2a$10$f${process.env.REACT_APP_TOILET_API_KEY}&format=json&railOprIsttCd=${RAIL_OPR_ISTT_CD}&lnCd=${LN_CD}&stinCd=${STIN_CD}`)
       .then((res) => {
-        // console.log(res);
         setChooseResultData(null);
-        
+
         if (res.data.header.resultCode === "00") {
           const resData = res.data.body[0]
           const chooseData = {
@@ -37,52 +36,39 @@ function Result() {
             toltNum: resData.toltNum //화장실개수
           }
           setChooseResultData(chooseData)
-          setMemoObj({key:thisMemoKey, text:""});
-          // setLocalData(chooseData);
+          setMemoObj({...memoObj, key:thisMemoKey});
         } else {
           setChooseResultData(null)
+          setMemoObj({...memoObj, key:thisMemoKey});
           console.log(res.data.header.resultMsg);
         }
       })
       .catch((err) => {
         console.log(err)
-        setChooseResultData(null)
+        setChooseResultData(null);
+        setMemoObj({...memoObj, key:thisMemoKey});
       })
   }
 
   useEffect(() => {
     setHeaders("result")
-    // console.log(headers);
     console.log(chooseStationData)
-    // console.log(sameStation)
+    setMemoObj({key:thisMemoKey, text:""});
     handleFetch();
 
-    // const memoFilter = memo.filter((i) => {
-    //   return memoObj.key === i.key
-    // })
-
-    // if(memoFilter.length === 0) {
-    //   setMemoObj({key: thisMemoKey, text:""});
-    // } else {
-    //   setMemoObj({key:thisMemoKey, text:memoFilter[0].text});
-    // }
     if(memoIndex === -1) {
-      setMemoObj({key: thisMemoKey, text:""})
+      setMemoObj({key: thisMemoKey, text: ""})
       console.log(memoObj);
       console.log(memoIndex);
     } else {
-      setMemoObj({key: thisMemoKey, text:memo[memoIndex].text})
+      const newMemo = [...memo];
+      memoObj.text = newMemo[memoIndex].text;
+      console.log(newMemo);
       console.log(memoObj);
       console.log(memoIndex);
     }
-
-    // handleSaveMemo();
-
+    
     console.log(memoObj);
-
-    // console.log(chooseStationData)
-    // console.log(chooseResultData)
-  // }, [headers, chooseStationData, memo])
   }, [headers, chooseStationData, memo, memoObj.key])
 
   const handleChangeStation = (stationData) => {
@@ -91,7 +77,6 @@ function Result() {
 
   const handleChangeTextArea = (e) => {
     setMemoObj({...memoObj, text: e.target.value})
-    // console.log(memoObj);
   }
 
   const handleSaveMemo = () => {
@@ -99,8 +84,16 @@ function Result() {
       setMemo([...memo, memoObj])
     } else {
       const newMemo = [...memo];
+      console.log(newMemo);
       newMemo[memoIndex].text = memoObj.text;
       setMemo(newMemo)
+    }
+  }
+
+  const handleEnterKeypress = (e) => {
+    if(e.key === "Enter") {
+      e.preventDefault();
+      handleSaveMemo()
     }
   }
 
@@ -148,7 +141,7 @@ function Result() {
       <div className='flex flex-col p-[20px] bg-white rounded-[16px]'>
         <h4 className='text-[14px] font-extrabold mb-[12px]'>나만의 메모</h4>
         <div className='flex flex-col items-end' >
-          <textarea className='w-full bg-lightGray h-[140px] w-full p-[14px] rounded-[10px] text-[14px] mb-[12px] resize-none outline-black' placeholder='메모를 입력해주세요.' onChange={handleChangeTextArea} value={memoObj.text} spellcheck="false"/>
+          <textarea className='w-full bg-lightGray h-[140px] w-full p-[14px] rounded-[10px] text-[14px] mb-[12px] resize-none outline-black' placeholder='메모를 입력해주세요.' onChange={handleChangeTextArea} value={memoObj.text} onKeyDown={handleEnterKeypress} spellcheck="false"/>
           <button className='w-auto bg-black py-[12px] px-[16px] text-white text-[12px] font-bold rounded-[30px]' onClick={handleSaveMemo}>저장</button>
         </div>
       </div>
