@@ -24,6 +24,7 @@ function Header() {
     } else {
       setHeaders("result");
     }
+    setInputSearch(searchInputValue);
     setSearchInputValue(searchInputValue);
     setSearchValue(sliceStationNM);
   }, [headers, searchInputValue]);
