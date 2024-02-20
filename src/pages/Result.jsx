@@ -18,8 +18,6 @@ function Result() {
     axios
       .get(`https://openapi.kric.go.kr/openapi/convenientInfo/stationToilet?serviceKey=$2a$10$f${process.env.REACT_APP_TOILET_API_KEY}&format=json&railOprIsttCd=${RAIL_OPR_ISTT_CD}&lnCd=${LN_CD}&stinCd=${STIN_CD}`)
       .then((res) => {
-        setChooseResultData(null);
-
         if (res.data.header.resultCode === "00") {
           const resData = res.data.body[0]
           const chooseData = {
@@ -40,7 +38,6 @@ function Result() {
         } else {
           setChooseResultData(null)
           setMemoObj({...memoObj, key:thisMemoKey});
-          console.log(res.data.header.resultMsg);
         }
       })
       .catch((err) => {
@@ -52,23 +49,16 @@ function Result() {
 
   useEffect(() => {
     setHeaders("result")
-    console.log(chooseStationData)
     setMemoObj({key:thisMemoKey, text:""});
     handleFetch();
 
     if(memoIndex === -1) {
       setMemoObj({key: thisMemoKey, text: ""})
-      console.log(memoObj);
-      console.log(memoIndex);
     } else {
       const newMemo = [...memo];
       memoObj.text = newMemo[memoIndex].text;
-      console.log(newMemo);
-      console.log(memoObj);
-      console.log(memoIndex);
     }
     
-    console.log(memoObj);
   }, [headers, chooseStationData, memo, memoObj.key])
 
   const handleChangeStation = (stationData) => {
@@ -84,7 +74,6 @@ function Result() {
       setMemo([...memo, memoObj])
     } else {
       const newMemo = [...memo];
-      console.log(newMemo);
       newMemo[memoIndex].text = memoObj.text;
       setMemo(newMemo)
     }

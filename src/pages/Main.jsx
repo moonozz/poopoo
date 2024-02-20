@@ -15,7 +15,6 @@ function Main() {
   const handleSearchPage = () => {
     navi('/search')
     setHeaders('search');
-    console.log(headers);
   }
 
   return (

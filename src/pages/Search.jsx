@@ -9,9 +9,6 @@ function Search() {
 
   useEffect(() => {
     setHeaders("search");
-    // console.log(headers)
-    // console.log(chooseStationData);
-    // console.log(sameStation);
   }, [headers, chooseStationData])
 
   const handleResulthPage = () => {
@@ -20,7 +17,6 @@ function Search() {
   }
 
   const handleChooseStation = (stationData) => {
-    // console.log("선택완료", stationData);
     setChooseStationData(stationData);
     const filterLine = searchValue.filter((i) => {
       return i.STIN_NM === stationData.STIN_NM
