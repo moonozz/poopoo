@@ -49,3 +49,18 @@
 ### <span> **Velog** </span>
 
 [velog 링크](https://velog.io/@moonozz/%EB%98%A5%EC%9F%81%EC%9D%B4-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8)<br />
+<br />
+<br />
+
+## 🔍 Preview
+### <span>1. 역 검색 후 메모 입력</span>
+<img src="https://github.com/moonozz/poopoo/assets/94160557/707244a7-2e20-462b-b587-863f2f807f6f"  width=auto height="600" alt="역 검색 후 메모 입력 설명 gif"/>
+<br />
+<br />
+
+### <span>2. 역 재검색 후 메모입력하고 다시 이전에 선택한 역 선택</span>
+<img src="https://github.com/moonozz/poopoo/assets/94160557/ffe3d521-c1ba-4aad-a29d-26179ce06b38"  width=auto height="600" alt="역 재검색 후 메모입력하고 다시 이전에 선택한 역 선택 gif"/>
+<br />
+
+
+
