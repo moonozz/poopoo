@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# 💩 POOPOO
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
 
-## Available Scripts
+## 💡 프로젝트 설명
 
-In the project directory, you can run:
+- 지하철에서 갑자기 화장실이 급할 때! 화장실의 정보를 제공하고 개인적인 메모를 남겨서 저장할 수 있는 서비스<br/>
+- 공공API를 사용하여 지하철 화장실 정보 제공<br/>
+- 모바일용으로 페이지 제작
+- 메인에서 검색창 클릭 시 검색페이지로 이동 ⇒ 단어 입력 시 해당 단어로 시작하는 지하철 역 노출 ⇒ 원하는 지하철 역 선택 ⇒ 해당 지하철의 상세페이지 이동 ⇒ 지하철의 화장실 정보 보여주고, 메모 입력 가능<br />
+- 선택한 지하철 상세페이지에 메모 local에 저장하고 불러오기
+  <br />
+  <br />
 
-### `npm start`
+## 🛠 기술 스택
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### <span> **Front-end** </span>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<div align="left">
+  <img align="top" src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML"> 
+  <img align="top" src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS">
+  <img align="top" src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+    <img align="top" src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
+    <img align="top" src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="axios">
+  <img align="top" src="https://img.shields.io/badge/tailwind%20css-06B6D4?style=for-the-badge&logo=tailwind%20css&logoColor=wthie" alt="Tailwind CSS">
+  <img align="top" src="https://img.shields.io/badge/zustand-000000?style=for-the-badge&logo=zustand&logoColor=white" alt="zustand">
+  <img align="top" src="https://img.shields.io/badge/env-ECD53F?style=for-the-badge&logo=dotenv&logoColor=black" alt="env">
+</div>
 
-### `npm test`
+### <span> **Tools** </span>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<div align="left">
+  <img align="top" src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" alt="Github"> 
+  <img align="top" src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
+</div>
+<br />
+<br />
 
-### `npm run build`
+## 📎 Link
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### <span> **Figma** </span>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[피그마 링크](https://www.figma.com/file/3YQNMdsJew2jKJm4sJifPs/poopoo?type=design&node-id=0-1&mode=design&t=1Ebgf7gP4WvqYQ7E-0)<br />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### <span> **배포링크(netlify)** </span>
 
-### `npm run eject`
+[배포 링크](https://moono-poopoo.netlify.app/)<br />
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### <span> **Velog** </span>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[velog 링크](https://velog.io/@moonozz/%EB%98%A5%EC%9F%81%EC%9D%B4-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8)<br />
