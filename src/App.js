@@ -8,7 +8,7 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="max-w-screen-md bg-mainBg h-screen w-full">
+    <div className="max-w-screen-md bg-mainBg h-auto w-full">
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />

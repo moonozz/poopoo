@@ -34,9 +34,9 @@ function Search() {
   };
 
   return (
-    <div className="h-full pt-[76px] px-[20px]">
+    <div className="h-auto min-h-screen pt-[76px] px-[20px]">
       {searchInputValue.length === 0 ? (
-        <div className="flex-center flex-col h-full">
+        <div className="flex-center flex-col h-[calc(100vh-76px)]">
           <img
             className="w-[120px] h-auto"
             src={`${process.env.PUBLIC_URL}/assets/symbol-none.png`}
@@ -47,7 +47,7 @@ function Search() {
           </p>
         </div>
       ) : searchValue.length === 0 ? (
-        <div className="flex-center flex-col h-full">
+        <div className="flex-center flex-col h-[calc(100vh-76px)]">
           <img
             className="w-[120px] h-auto"
             src={`${process.env.PUBLIC_URL}/assets/symbol-none.png`}

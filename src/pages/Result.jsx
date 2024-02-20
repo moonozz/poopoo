@@ -98,7 +98,7 @@ function Result() {
   };
 
   return (
-    <section className="flex flex-col h-full pt-[76px] px-[20px] gap-[20px]">
+    <section className="flex flex-col h-auto min-h-screen pt-[76px] px-[20px] gap-[20px] pb-[20px]">
       <div className="flex-col text-[20px] mt-[20px] font-extrabold">
         <h2>{chooseStationData.STIN_NM}</h2>
         <h2>화장실 정보</h2>
@@ -191,7 +191,7 @@ function Result() {
             onChange={handleChangeTextArea}
             value={memoObj.text}
             onKeyDown={handleEnterKeypress}
-            spellcheck="false"
+            spellCheck="false"
           />
           <button
             className="w-auto bg-black py-[12px] px-[16px] text-white text-[12px] font-bold rounded-[30px]"

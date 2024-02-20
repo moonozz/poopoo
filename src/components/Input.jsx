@@ -4,7 +4,7 @@ import usePooStore from "../store";
 function Input(props) {
   const { placeholder, value, onChange, onKeyDown, onClick, className } = props;
 
-  const { headers, setHeaders } = usePooStore();
+  const { headers } = usePooStore();
 
   return (
     <div
