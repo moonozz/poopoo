@@ -26,7 +26,7 @@ function Header() {
     }
     setInputSearch(searchInputValue);
     setSearchInputValue(searchInputValue);
-    setSearchValue(sliceStationNM);
+    setSearchValue(sortedFilterStation);
   }, [headers, searchInputValue]);
 
   const handleInput = (e) => {
@@ -35,7 +35,8 @@ function Header() {
 
   const FilterStationJson = stationJson.filter((i) => {
     if (inputSearch.length > 0) {
-      return i.STIN_NM.startsWith(inputSearch);
+      // return i.STIN_NM.startsWith(inputSearch);
+      return i.STIN_NM.includes(inputSearch);
     }
   });
 
@@ -43,22 +44,22 @@ function Header() {
     return a.STIN_NM.localeCompare(b.STIN_NM);
   });
 
-  const sliceStationNM = sortedFilterStation.map((i) => {
-    return { ...i, STIN_NM: i.STIN_NM.split("(")[0].trim() };
-  });
+  // const sliceStationNM = sortedFilterStation.map((i) => {
+  //   return { ...i, STIN_NM: i.STIN_NM.split("(")[0].trim() };
+  // });
 
   const handleEnterKeypress = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
       // 검색input에 입력한 텍스트 기억하는 용도
       setSearchInputValue(inputSearch);
-      setSearchValue(sliceStationNM);
+      setSearchValue(sortedFilterStation);
     }
   };
 
   const handleSearchValue = () => {
     setSearchInputValue(inputSearch);
-    setSearchValue(sliceStationNM);
+    setSearchValue(sortedFilterStation);
   };
 
   const handleBackPage = () => {

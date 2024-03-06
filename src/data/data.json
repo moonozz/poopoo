@@ -573,7 +573,7 @@
     "LN_CD":"7",
     "LN_NM":"7호선",
     "STIN_CD":"761",
-    "STIN_NM":"석남(거북시장)"
+    "STIN_NM":"석남"
   },
   {
     "RAIL_OPR_ISTT_CD":"IC",
@@ -1109,7 +1109,7 @@
     "LN_CD":"1",
     "LN_NM":"1호선",
     "STIN_CD":"0145",
-    "STIN_NM":"온수"
+    "STIN_NM":"온수(성공회대입구)"
   },
   {
     "RAIL_OPR_ISTT_CD":"KR",
@@ -2061,7 +2061,7 @@
     "LN_CD":"K1",
     "LN_NM":"수인분당",
     "STIN_CD":"K209",
-    "STIN_NM":"청량리"
+    "STIN_NM":"청량리(서울시립대입구)"
   },
   {
     "RAIL_OPR_ISTT_CD":"KR",
@@ -2549,7 +2549,7 @@
     "LN_CD":"K2",
     "LN_NM":"경춘",
     "STIN_CD":"K117",
-    "STIN_NM":"청량리"
+    "STIN_NM":"청량리(서울시립대입구)"
   },
   {
     "RAIL_OPR_ISTT_CD":"KR",
@@ -2821,7 +2821,7 @@
     "LN_CD":"K4",
     "LN_NM":"경의중앙",
     "STIN_CD":"K111",
-    "STIN_NM":"이촌"
+    "STIN_NM":"이촌(국립중앙박물관)"
   },
   {
     "RAIL_OPR_ISTT_CD":"KR",
@@ -2957,7 +2957,7 @@
     "LN_CD":"K4",
     "LN_NM":"경의중앙",
     "STIN_CD":"K209",
-    "STIN_NM":"청량리"
+    "STIN_NM":"청량리(서울시립대입구)"
   },
   {
     "RAIL_OPR_ISTT_CD":"KR",
@@ -3205,7 +3205,7 @@
     "LN_CD":"K5",
     "LN_NM":"경강선",
     "STIN_CD":"K411",
-    "STIN_NM":"이매"
+    "STIN_NM":"이매(성남아트센터)"
   },
   {
     "RAIL_OPR_ISTT_CD":"KR",
@@ -3309,7 +3309,7 @@
     "LN_CD":"1",
     "LN_NM":"1호선",
     "STIN_CD":"153",
-    "STIN_NM":"종로3가"
+    "STIN_NM":"종로3가(탑골공원)"
   },
   {
     "RAIL_OPR_ISTT_CD":"S1",
@@ -3853,7 +3853,7 @@
     "LN_CD":"3",
     "LN_NM":"3호선",
     "STIN_CD":"319",
-    "STIN_NM":"종로3가"
+    "STIN_NM":"종로3가(탑골공원)"
   },
   {
     "RAIL_OPR_ISTT_CD":"S1",
@@ -4709,7 +4709,7 @@
     "LN_CD":"5",
     "LN_NM":"5호선",
     "STIN_CD":"2565",
-    "STIN_NM":"하남시청(덕풍?신장)"
+    "STIN_NM":"하남시청"
   },
   {
     "RAIL_OPR_ISTT_CD":"S1",
@@ -5125,7 +5125,7 @@
     "LN_CD":"7",
     "LN_NM":"7호선",
     "STIN_CD":"2722",
-    "STIN_NM":"상봉(시외버스터미널)"
+    "STIN_NM":"상봉"
   },
   {
     "RAIL_OPR_ISTT_CD":"S1",
@@ -5453,7 +5453,7 @@
     "LN_CD":"8",
     "LN_NM":"8호선",
     "STIN_CD":"2821",
-    "STIN_NM":"복정"
+    "STIN_NM":"복정(동서울대학)"
   },
   {
     "RAIL_OPR_ISTT_CD":"S1",
@@ -5725,7 +5725,7 @@
     "LN_CD":"9",
     "LN_NM":"9호선",
     "STIN_CD":"927",
-    "STIN_NM":"선정릉"
+    "STIN_NM":"선정릉(한국과학창의재단)"
   },
   {
     "RAIL_OPR_ISTT_CD":"S9",
@@ -6157,7 +6157,7 @@
     "LN_CD":"UI",
     "LN_NM":"우이신설",
     "STIN_CD":"S120",
-    "STIN_NM":"성신여대입구"
+    "STIN_NM":"성신여대입구(돈암)"
   },
   {
     "RAIL_OPR_ISTT_CD":"UI",
