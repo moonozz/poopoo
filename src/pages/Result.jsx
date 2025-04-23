@@ -53,7 +53,7 @@ function Result() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setChooseResultData(null);
         setMemoObj({ ...memoObj, key: thisMemoKey });
       });
